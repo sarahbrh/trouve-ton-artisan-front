@@ -1,0 +1,27 @@
+// Variables couleurs
+$primary: #0074c7;
+$secondary: #00497c;
+$dark: #384050;
+$light: #f1f8fc;
+$danger: #cd2c2e;
+$success: #82b864;
+
+// Reset de base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Graphik", sans-serif;
+  background-color: $light;
+  color: $dark;
+}
+
+// Couleurs Bootstrap custom
+:root {
+  --bs-primary: #{$primary};
+  --bs-secondary: #{$secondary};
+  --bs-dark: #{$dark};
+}
