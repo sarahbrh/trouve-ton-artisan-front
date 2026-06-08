@@ -9,7 +9,7 @@ function Header() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/categories")
+      .get("https://trouve-ton-artisan-api-0gng.onrender.com/api/categories")
       .then((res) => setCategories(res.data))
       .catch((err) => console.error(err));
   }, []);

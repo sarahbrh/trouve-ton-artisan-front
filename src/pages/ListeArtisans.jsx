@@ -10,7 +10,9 @@ function ListeArtisans() {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:4000/api/artisans/categorie/${id}`)
+        .get(
+          `https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/categorie/${id}`,
+        )
         .then((res) => {
           setArtisans(res.data);
           if (res.data.length > 0) {

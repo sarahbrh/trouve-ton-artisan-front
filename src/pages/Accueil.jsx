@@ -7,7 +7,7 @@ function Accueil() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/api/artisans/top")
+      .get("https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/top")
       .then((res) => setArtisansTop(res.data))
       .catch((err) => console.error(err));
   }, []);

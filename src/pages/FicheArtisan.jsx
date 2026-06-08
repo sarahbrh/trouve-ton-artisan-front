@@ -15,7 +15,9 @@ function FicheArtisan() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/api/artisans/${id}`)
+      .get(
+        `https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/${id}`,
+      )
       .then((res) => setArtisan(res.data))
       .catch((err) => console.error(err));
   }, [id]);
