@@ -18,7 +18,7 @@ function FicheArtisan() {
       .get(
         `https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/${id}`,
       )
-      .then((res) => setArtisansTop(Array.isArray(res.data) ? res.data : []))
+      .then((res) => setArtisan(res.data))
       .catch((err) => console.error(err));
   }, [id]);
 
