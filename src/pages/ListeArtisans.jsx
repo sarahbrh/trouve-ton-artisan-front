@@ -14,17 +14,20 @@ function ListeArtisans() {
           `https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/categorie/${id}`,
         )
         .then((res) => {
-          setArtisans(res.data);
-          if (res.data.length > 0) {
-            setTitre(res.data[0].Specialite?.Categorie?.nom);
+          const data = Array.isArray(res.data) ? res.data : [];
+          setArtisans(data);
+          if (data.length > 0) {
+            setTitre(data[0].Specialite?.Categorie?.nom);
           }
         })
         .catch((err) => console.error(err));
     } else if (nom) {
       axios
-        .get(`http://localhost:3000/api/artisans/search/${nom}`)
+        .get(
+          `https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/search/${nom}`,
+        )
         .then((res) => {
-          setArtisans(res.data);
+          setArtisans(Array.isArray(res.data) ? res.data : []);
           setTitre(`Résultats pour "${nom}"`);
         })
         .catch((err) => console.error(err));
