@@ -8,7 +8,7 @@ function Accueil() {
   useEffect(() => {
     axios
       .get("https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/top")
-      .then((res) => setArtisansTop(res.data))
+      .then((res) => setArtisansTop(Array.isArray(res.data) ? res.data : []))
       .catch((err) => console.error(err));
   }, []);
 
