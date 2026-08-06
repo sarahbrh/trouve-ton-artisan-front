@@ -1,0 +1,32 @@
+@import "../styles/variables"; // adapte le chemin vers ton fichier de variables
+
+.custom-header {
+  background-color: $light;
+
+  .navbar-brand img {
+    display: block;
+  }
+
+  .nav-link {
+    color: $dark;
+    font-weight: 500;
+    margin: 0 12px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .search-input {
+    border-radius: 50px;
+    border: 1px solid $secondary;
+    padding: 6px 18px;
+
+    &:focus {
+      outline: none;
+      border-color: $primary;
+      box-shadow: none;
+    }
+  }
+}

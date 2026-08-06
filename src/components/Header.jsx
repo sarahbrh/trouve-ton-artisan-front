@@ -22,10 +22,7 @@ function Header() {
   };
 
   return (
-    <header
-      className="navbar navbar-expand-lg px-0"
-      style={{ backgroundColor: "#f1f8fc" }}
-    >
+    <header className="navbar navbar-expand-lg px-0">
       <div className="container">
         <Link className="navbar-brand me-4" to="/">
           <img src="/logo.png" alt="Trouve ton artisan" height="70" />
