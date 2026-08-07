@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import emailjs from "@emailjs/browser";
 
 function FicheArtisan() {
   const [artisan, setArtisan] = useState(null);
@@ -24,8 +25,27 @@ function FicheArtisan() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSucces(true);
-    setForm({ nom: "", email: "", objet: "", message: "" });
+
+    emailjs
+      .send(
+        "service_jeuut8o",
+        "template_qrmb6zi",
+        {
+          nom: form.nom,
+          email: form.email,
+          objet: form.objet,
+          message: form.message,
+        },
+        "ST4deWMaIHtc7mDr9",
+      )
+      .then(() => {
+        setSucces(true);
+        setForm({ nom: "", email: "", objet: "", message: "" });
+      })
+      .catch((err) => {
+        console.error("Erreur envoi email :", err);
+        alert("Une erreur est survenue lors de l'envoi. Réessaie.");
+      });
   };
 
   if (!artisan) return <p className="text-center mt-5">Chargement...</p>;
@@ -42,7 +62,6 @@ function FicheArtisan() {
       <section style={{ backgroundColor: "white", padding: "60px 0" }}>
         <div className="container">
           <div className="row">
-            {/* Colonne gauche */}
             <div className="col-md-6">
               <div
                 style={{
@@ -76,7 +95,7 @@ function FicheArtisan() {
                   À propos
                 </h5>
                 <p>{artisan.a_propos}</p>
-                {artisan.site_web && (
+                {artisan.site_web ? (
                   <a
                     href={artisan.site_web}
                     target="_blank"
@@ -85,11 +104,10 @@ function FicheArtisan() {
                   >
                     🌐 {artisan.site_web}
                   </a>
-                )}
+                ) : null}
               </div>
             </div>
 
-            {/* Colonne droite — Formulaire */}
             <div className="col-md-6">
               <h4
                 style={{
@@ -100,14 +118,14 @@ function FicheArtisan() {
               >
                 Contacter {artisan.nom}
               </h4>
-              {succes && (
+              {succes ? (
                 <div
                   className="alert"
                   style={{ backgroundColor: "#82b864", color: "white" }}
                 >
                   Votre message a bien été envoyé !
                 </div>
-              )}
+              ) : null}
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <label className="form-label">Nom</label>
