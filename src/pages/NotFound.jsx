@@ -12,17 +12,6 @@ function NotFound() {
         }}
       >
         <div className="container">
-          <div
-            style={{
-              backgroundColor: "#f1f8fc",
-              borderRadius: "10px",
-              padding: "20px",
-              width: "300px",
-              margin: "0 auto 30px",
-            }}
-          >
-            <span style={{ color: "#888" }}>Image</span>
-          </div>
           <h1
             style={{ color: "#384050", fontWeight: "bold", fontSize: "100px" }}
           >
