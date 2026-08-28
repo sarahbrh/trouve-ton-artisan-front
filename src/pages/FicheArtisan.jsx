@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000/api";
+
 function FicheArtisan() {
   const [artisan, setArtisan] = useState(null);
   const [form, setForm] = useState({
@@ -16,9 +18,7 @@ function FicheArtisan() {
 
   useEffect(() => {
     axios
-      .get(
-        `https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/${id}`,
-      )
+      .get(`${API_URL}/artisans/${id}`)
       .then((res) => setArtisan(res.data))
       .catch((err) => console.error(err));
   }, [id]);

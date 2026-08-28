@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000/api";
+
 function Accueil() {
   const [artisansTop, setArtisansTop] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/top")
+      .get(`${API_URL}/artisans/top`)
       .then((res) => setArtisansTop(Array.isArray(res.data) ? res.data : []))
       .catch((err) => console.error(err));
   }, []);

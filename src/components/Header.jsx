@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000/api";
+
 function Header() {
   const [categories, setCategories] = useState([]);
   const [search, setSearch] = useState("");
@@ -9,7 +11,7 @@ function Header() {
 
   useEffect(() => {
     axios
-      .get("https://trouve-ton-artisan-api-0gng.onrender.com/api/categories")
+      .get(`${API_URL}/categories`)
       .then((res) => setCategories(Array.isArray(res.data) ? res.data : []))
       .catch((err) => console.error(err));
   }, []);

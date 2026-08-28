@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4000/api";
+
 function ListeArtisans() {
   const [artisans, setArtisans] = useState([]);
   const [titre, setTitre] = useState("");
@@ -10,9 +12,7 @@ function ListeArtisans() {
   useEffect(() => {
     if (id) {
       axios
-        .get(
-          `https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/categorie/${id}`,
-        )
+        .get(`${API_URL}/artisans/categorie/${id}`)
         .then((res) => {
           const data = Array.isArray(res.data) ? res.data : [];
           setArtisans(data);
@@ -23,9 +23,7 @@ function ListeArtisans() {
         .catch((err) => console.error(err));
     } else if (nom) {
       axios
-        .get(
-          `https://trouve-ton-artisan-api-0gng.onrender.com/api/artisans/search/${nom}`,
-        )
+        .get(`${API_URL}/artisans/search/${nom}`)
         .then((res) => {
           setArtisans(Array.isArray(res.data) ? res.data : []);
           setTitre(`Résultats pour "${nom}"`);
@@ -44,7 +42,6 @@ function ListeArtisans() {
           </p>
         </div>
       </section>
-
       <section style={{ backgroundColor: "white", padding: "60px 0" }}>
         <div className="container">
           <div className="row">
